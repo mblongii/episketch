@@ -1,0 +1,7 @@
+applications:
+  - name: episketch-api
+    memory: 512M
+    path: .
+    command: bundle exec rake db:migrate && bundle exec rails s -p $PORT
+    services:
+      - episketch-dev

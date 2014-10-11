@@ -21,7 +21,7 @@ class DesignersController < ApplicationController
   # POST /designers
   # POST /designers.json
   def create
-    @designer = Designer.new(params[:designer])
+    @designer = Designer.new(params.require(:designer).permit(:email))
 
     if @designer.save
       render json: @designer, status: :created, location: @designer

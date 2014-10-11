@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '4.1.6'
 
@@ -8,7 +9,10 @@ gem 'spring', :group => :development
 
 gem 'sqlite3'
 
-gem 'rails_12factor', group: :production
+group :production do
+    gem 'rails_12factor'
+    gem 'pg'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
