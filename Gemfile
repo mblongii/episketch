@@ -4,10 +4,6 @@ gem 'rails', '4.1.6'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
-
-gem 'sqlite3'
-
 gem 'rails_12factor', group: :production
 
 gem 'puma'
