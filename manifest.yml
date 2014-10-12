@@ -1,3 +1,5 @@
 applications:
   - name: episketch-push
     memory: 512M
+    instances: 1
+    path: .
