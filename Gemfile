@@ -22,3 +22,5 @@ gem 'puma'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'foreman', group: :development
