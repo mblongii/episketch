@@ -6,23 +6,15 @@ Bundler.require
 register Sinatra::PubSub
 
 Sinatra::PubSub.set(
-  cors: true
+  cors: false,
 )
-
-EventMachine.next_tick do
-  EventMachine::PeriodicTimer.new(3) do
-    Sinatra::PubSub.publish('time', time: "#{DateTime.now}")
-  end
-end
-
-
 
 get '/' do
   erb :stream
 end
 
-get '/publish' do
-  erb "#{Sinatra::PubSub.publish('time', greet: "Hello!")}"
+get '/greet' do
+  erb "#{Sinatra::PubSub.publish('greet', greet: "Hello!")}"
 end
 
 __END__
@@ -33,6 +25,6 @@ __END__
 
 <script>
   // reading
-  var es = new EventSource('/subscribe/time');
+  var es = new EventSource('/subscribe/greet');
   es.onmessage = function(e) { log.innerHTML += "\n" + e.data };
 </script>

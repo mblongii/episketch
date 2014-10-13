@@ -2,5 +2,6 @@ source "https://rubygems.org"
 ruby "2.0.0"
 
 gem "sinatra"
-gem "sinatra-pubsub"
-gem "thin"
+gemspec path: 'gems'
+
+gem "foreman", group: :development
