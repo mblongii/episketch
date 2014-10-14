@@ -1,5 +1,6 @@
 class IndexController < ApplicationController
   include PushServer
+  skip_before_filter :authenticate!
 
   def about
     render :json => {

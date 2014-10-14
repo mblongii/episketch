@@ -23,6 +23,7 @@ done
 TEMP_VALUE_1=`echo $RANDOM`_1
 TEST_DESIGNER_1="$TEMP_VALUE_1@test1.com"
 TEST_DESIGNER_1_AVATAR="$HOST/test/images/avatar_1.png"
+BOGUS_DESIGNER="688a5f88269d6eb586af248d77c23e28"
 # user 2
 TEMP_VALUE_2=`echo $RANDOM`_2
 TEST_DESIGNER_2="$TEMP_VALUE_2@test2.com"
@@ -45,7 +46,7 @@ TEST_DESIGNER_6="$TEMP_VALUE_6@test6.com"
 # TEST_DESIGNER_6_AVATAR="$HOST/test/images/avatar_6.png"
 # funkshuns
 function get_designer_location {
-  cat $HEADERS | grep 'Location: ' | grep 'designers' | cut -c 43,43 | tr -d '\r'
+  cat $HEADERS | grep 'Location: ' | grep 'designers' | cut -c 53,53 | tr -d '\r'
 }
 function get_token {
   cat $HEADERS | grep 'Auth-Token: ' | cut -c 13-44 | tr -d '\r'

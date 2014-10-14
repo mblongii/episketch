@@ -1,6 +1,7 @@
 class DesignersController < ApplicationController
 
   wrap_parameters :designer, include: [:email]
+  skip_before_filter :authenticate!, only: [:create]
 
   # GET /designers
   # GET /designers.json
@@ -24,9 +25,9 @@ class DesignersController < ApplicationController
     @designer = Designer.new(params.require(:designer).permit(:email))
 
     if @designer.save
-      render json: @designer, status: :created, location: @designer
+      head status: :created, location: @designer, auth_token: @designer.auth_token
     else
-      render json: @designer.errors, status: :unprocessable_entity
+     render json: @designer.errors, status: :unprocessable_entity
     end
   end
 
