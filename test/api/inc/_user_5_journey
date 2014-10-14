@@ -1,0 +1,18 @@
+#!/bin/bash
+# designer 5 journey
+mkdir -p tmp/api/$TEMP_VALUE_5;TRACE=tmp/api/$TEMP_VALUE_5/trace
+HEADERS=tmp/api/$TEMP_VALUE_5.headers
+SELF=$TEST_DESIGNER_5
+printf "\n$SELF"
+
+EXPECT="200 OK" # when '/login' receives POST request w/ valid email.
+LINE_NUMBER=$LINENO
+curl "$HOST/login" -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"email":"'$SELF'"}' -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "GET /login $LINE_NUMBER: Expecting: '$EXPECT'"
+
+EXPECT="200 OK" # when '/storyboards/:id/viewer' receives PUT request w/ valid token.
+LINE_NUMBER=$LINENO
+curl "$HOST/storyboards/$STORYBOARD_ID/viewer" -v -H "Auth-Token: $AUTH_TOKEN" -H "Accept: application/json" -H "Content-type: application/json" -X PUT -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "PUT /storyboards/$STORYBOARD_ID/viewer $LINE_NUMBER: Expecting: '$EXPECT'"

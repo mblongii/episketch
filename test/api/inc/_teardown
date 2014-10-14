@@ -1,0 +1,5 @@
+#!/bin/bash
+CLEAN='rake db:drop db:migrate'
+printf "\n$CLEAN\n"
+`$CLEAN` > /dev/null 2>&1
+kill -9 `ps aux | grep -E 'unicorn' | grep -v grep | awk '{print $2}'`

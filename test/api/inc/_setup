@@ -1,0 +1,87 @@
+#!/bin/bash
+rm -rf tmp/api
+source $DIR/inc/_teardown
+bundle exec unicorn -p 3000 -c ./config/unicorn.rb --daemonize
+
+# Open pusher.html in a browser window to see storyboard participant's avatars.
+scp ./public/push_viewers.html $USER@172.16.18.1 ~/Desktop/push_viewers.html
+ssh $USER@172.16.18.1 "open ~/Desktop/push_viewers.html"
+
+HOST="http://episketch-api.local:3000"
+
+# Start the server, dummy.
+printf "Waiting for you to start the server on $HOST"
+while :
+do
+  if [[ ! -z `curl -s $HOST` ]]
+  then
+    break
+  fi
+done
+
+# user 1
+TEMP_VALUE_1=`echo $RANDOM`_1
+TEST_DESIGNER_1="$TEMP_VALUE_1@test1.com"
+TEST_DESIGNER_1_AVATAR="$HOST/test/images/avatar_1.png"
+# user 2
+TEMP_VALUE_2=`echo $RANDOM`_2
+TEST_DESIGNER_2="$TEMP_VALUE_2@test2.com"
+TEST_DESIGNER_2_AVATAR="$HOST/test/images/avatar_2.png"
+# user 3
+TEMP_VALUE_3=`echo $RANDOM`_3
+TEST_DESIGNER_3="$TEMP_VALUE_3@test3.com"
+TEST_DESIGNER_3_AVATAR="$HOST/test/images/avatar_3.png"
+# user 4
+TEMP_VALUE_4=`echo $RANDOM`_4
+TEST_DESIGNER_4="$TEMP_VALUE_4@test4.com"
+TEST_DESIGNER_4_AVATAR="$HOST/test/images/avatar_4.png"
+# user 5
+TEMP_VALUE_5=`echo $RANDOM`_5
+TEST_DESIGNER_5="$TEMP_VALUE_5@test5.com"
+TEST_DESIGNER_5_AVATAR="$HOST/test/images/avatar_5.png"
+# user 6
+TEMP_VALUE_6=`echo $RANDOM`_6
+TEST_DESIGNER_6="$TEMP_VALUE_6@test6.com"
+# TEST_DESIGNER_6_AVATAR="$HOST/test/images/avatar_6.png"
+# funkshuns
+function get_designer_location {
+  cat $HEADERS | grep 'Location: ' | grep 'designers' | cut -c 43,43 | tr -d '\r'
+}
+function get_token {
+  cat $HEADERS | grep 'Auth-Token: ' | cut -c 13-44 | tr -d '\r'
+}
+function get_storyboard_location {
+  cat $HEADERS | grep 'Location: ' | grep 'storyboards' | cut -c 45,45 | tr -d '\r'
+}
+function get_sketch_location {
+  cat $HEADERS | grep 'Location: ' | grep 'sketches' | cut -c 42,42 | tr -d '\r'
+}
+function process_result {
+  # Is this the result you were exepecting?
+  if [[ -z `cat $HEADERS | grep "$EXPECT"` ]]
+    then printf "\nFAIL! `head -1 $HEADERS`\n"
+    exit 1
+  else
+    printf "\nPASSED! "
+  fi
+  # Check for a designer id for subsequent tests
+  if [[ ! -z `get_designer_location` ]]
+    then
+    DESIGNER_ID=`get_designer_location`
+  fi
+  # Check for a token for subsequent tests
+  if [[ ! -z `get_token` ]]
+    then
+    AUTH_TOKEN=`get_token`
+  fi
+  # Check for a storyboard id for subsequent tests
+  if [[ ! -z `get_storyboard_location` ]]
+    then
+    STORYBOARD_ID=`get_storyboard_location`
+  fi
+  # Check for a sketch id for subsequent tests
+  if [[ ! -z `get_sketch_location` ]]
+    then
+    SKETCH_ID=`get_sketch_location`
+  fi
+}

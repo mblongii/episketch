@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <pre id="log">
+    </pre>
+
+    <script>
+      // reading
+      var es = new EventSource('http://episketch-push.local:5000/subscribe/viewers');
+      es.onmessage = function(e) { log.innerHTML += "\n" + e.data };
+    </script>
+  <body>
+</html>

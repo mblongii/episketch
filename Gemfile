@@ -5,9 +5,11 @@ gem 'rails', '4.1.6'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
-
-gem 'sqlite3'
+group :development do
+  gem 'foreman'
+  gem 'sqlite3'
+  gem 'spring'
+end
 
 group :production do
     gem 'rails_12factor'
@@ -28,5 +30,3 @@ gem 'unicorn'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-gem 'foreman', group: :development

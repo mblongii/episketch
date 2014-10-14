@@ -1,0 +1,36 @@
+#!/bin/bash
+# designer 6 journey
+mkdir -p tmp/api/$TEMP_VALUE_6;TRACE=tmp/api/$TEMP_VALUE_6/trace
+HEADERS=tmp/api/$TEMP_VALUE_6.headers
+SELF=$TEST_DESIGNER_6
+printf "\n$SELF"
+
+EXPECT="200 OK" # when '/login' receives POST request w/ valid email.
+LINE_NUMBER=$LINENO
+curl "$HOST/login" -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"email":"'$SELF'"}' -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "GET /login $LINE_NUMBER: Expecting: '$EXPECT'"
+
+EXPECT="200 OK" # when '/storyboards' receives GET request w/ valid token.
+LINE_NUMBER=$LINENO
+curl "$HOST/designers/$DESIGNER_ID/storyboards" -H "Auth-Token: $AUTH_TOKEN" -v -H "Accept: application/json" -H "Content-type: application/json" -X GET -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "GET /designers/$DESIGNER_ID/storyboards $LINE_NUMBER: Expecting: '$EXPECT'"
+
+EXPECT="200 OK" # when '/designers' receives GET request w/ valid token.
+LINE_NUMBER=$LINENO
+curl "$HOST/designers" -v -H "Auth-Token: $AUTH_TOKEN" -H "Accept: application/json" -H "Content-type: application/json" -X GET -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "POST /designers $LINE_NUMBER: Expecting: '$EXPECT'"
+
+EXPECT="201 Created" # when '/storyboards' receives POST request w/ valid token.
+LINE_NUMBER=$LINENO
+curl "$HOST/designers/$DESIGNER_ID/storyboards" -v -H "Auth-Token: $AUTH_TOKEN" -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"name":"A Journey"}' -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "POST /designers/$DESIGNER_ID/storyboards $LINE_NUMBER: Expecting: '$EXPECT'"
+
+EXPECT="200 OK" # when '/storyboards' receives GET request w/ valid token.
+LINE_NUMBER=$LINENO
+curl "$HOST/designers/$DESIGNER_ID/storyboards" -H "Auth-Token: $AUTH_TOKEN" -v -H "Accept: application/json" -H "Content-type: application/json" -X GET -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "GET /designers/$DESIGNER_ID/storyboards $LINE_NUMBER: Expecting: '$EXPECT'"

@@ -1,0 +1,25 @@
+#!/bin/bash
+# designer 4 journey
+mkdir -p tmp/api/$TEMP_VALUE_4;TRACE=tmp/api/$TEMP_VALUE_4/trace
+HEADERS=tmp/api/$TEMP_VALUE_4.headers
+SELF=$TEST_DESIGNER_4
+printf "\n$SELF"
+
+EXPECT="200 OK" # when '/login' receives POST request w/ valid email.
+LINE_NUMBER=$LINENO
+curl "$HOST/login" -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"email":"'$SELF'"}' -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "GET /login $LINE_NUMBER: Expecting: '$EXPECT'"
+
+EXPECT="204 No Content" # when '/designers/:id' receives PUT request w/ avatar url and w/ designer's auth_token.
+LINE_NUMBER=$LINENO
+curl "$HOST/designers/$DESIGNER_ID" -v -H "Auth-Token: $AUTH_TOKEN" -H "Accept: application/json" -H "Content-type: application/json" -X PUT -d '{"avatar_url":"'$TEST_DESIGNER_4_AVATAR'"}' -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "GET /designers/$DESIGNER_ID $LINE_NUMBER: Expecting: '$EXPECT'"
+
+EXPECT="200 OK" # when '/storyboards/:id/viewer' receives PUT request w/ valid token.
+LINE_NUMBER=$LINENO
+curl "$HOST/storyboards/$STORYBOARD_ID/viewer" -v -H "Auth-Token: $AUTH_TOKEN" -H "Accept: application/json" -H "Content-type: application/json" -X PUT -D $HEADERS --trace-ascii $TRACE.$LINE_NUMBER > /dev/null 2>&1
+process_result
+printf "PUT /storyboards/$STORYBOARD_ID/viewer $LINE_NUMBER: Expecting: '$EXPECT'"
+
