@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  resources :designers,   only: [:index, :show, :create]
+  resources :storyboards do
+    get 'viewers',          on: :member, action: :get_viewers
+    put 'viewer',           on: :member, action: :set_viewer
+    get 'participants',     on: :member, action: :get_participants
+    post 'invite',          on: :member, action: :invite
+
+    resources :designers,   only: [:index, :show, :create]
+  end
+
+  resources :designers do
+    resources :storyboards, only: [ :index, :show, :create, :update]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
