@@ -2,8 +2,10 @@
 
 one:
   designer_id: 1
-  name: MyString
+  url: MyString
+  storyboard_id: 1
 
 two:
   designer_id: 1
-  name: MyString
+  url: MyString
+  storyboard_id: 1

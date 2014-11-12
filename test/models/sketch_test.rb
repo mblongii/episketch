@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class IndexControllerTest < ActionController::TestCase
+class SketchTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

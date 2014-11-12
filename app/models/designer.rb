@@ -1,7 +1,8 @@
 class Designer < ActiveRecord::Base
   include ValidateEmail
-  before_create :generate_auth_token
   has_many :storyboards
+  has_many :sketches
+  before_create :generate_auth_token
   validates :email, presence: true, uniqueness: true, email: true
 
 private

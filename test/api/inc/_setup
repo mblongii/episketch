@@ -4,8 +4,8 @@ source $DIR/inc/_teardown
 bundle exec unicorn -p 3000 -c ./config/unicorn.rb --daemonize
 
 # Open pusher.html in a browser window to see storyboard participant's avatars.
-scp ./public/push_viewers.html $USER@172.16.18.1 ~/Desktop/push_viewers.html
-ssh $USER@172.16.18.1 "open ~/Desktop/push_viewers.html"
+# scp ./public/push_viewers.html $USER@172.16.18.1 ~/Desktop/push_viewers.html
+# ssh $USER@172.16.18.1 "open ~/Desktop/push_viewers.html"
 
 HOST="http://episketch-api.local:3000"
 
@@ -52,7 +52,7 @@ function get_token {
   cat $HEADERS | grep 'Auth-Token: ' | cut -c 13-44 | tr -d '\r'
 }
 function get_storyboard_location {
-  cat $HEADERS | grep 'Location: ' | grep 'storyboards' | cut -c 45,45 | tr -d '\r'
+  cat $HEADERS | grep 'Location: ' | grep 'storyboards' | cut -c 55,55 | tr -d '\r'
 }
 function get_sketch_location {
   cat $HEADERS | grep 'Location: ' | grep 'sketches' | cut -c 42,42 | tr -d '\r'

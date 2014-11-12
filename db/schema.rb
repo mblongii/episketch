@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014072905) do
+ActiveRecord::Schema.define(version: 20141112235334) do
 
   create_table "designers", force: true do |t|
     t.string   "email"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 20141014072905) do
     t.string   "auth_token"
     t.integer  "storyboard_id"
     t.integer  "viewing_storyboard_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participants", force: true do |t|
+    t.string   "email"
+    t.integer  "storyboard_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sketches", force: true do |t|
+    t.integer  "designer_id"
+    t.string   "url"
+    t.integer  "storyboard_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
