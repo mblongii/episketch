@@ -1,9 +1,10 @@
 class StoryboardsController < ApplicationController
   include StoryboardParticipants
+  include StoryboardViewers
   include Storyboards
 
   wrap_parameters :storyboard, include: [:name, :email]
-  before_filter :find, only: [:show, :update, :invite, :get_participants]
+  before_filter :find, only: [:show, :update, :invite, :get_participants, :set_viewer, :get_viewers]
 
   def find
     @storyboard = Storyboard.find(params[:id])

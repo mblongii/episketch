@@ -2,9 +2,9 @@
 DIR=`dirname $0`
 source $DIR/inc/_setup
 source $DIR/inc/_user_1_journey
-# source $DIR/inc/_user_2_journey
-# source $DIR/inc/_user_3_journey
-# source $DIR/inc/_user_4_journey
-# source $DIR/inc/_user_5_journey
-# source $DIR/inc/_user_6_journey
+source $DIR/inc/_user_2_journey
+source $DIR/inc/_user_3_journey
+source $DIR/inc/_user_4_journey
+source $DIR/inc/_user_5_journey
+source $DIR/inc/_user_6_journey
 source $DIR/inc/_teardown

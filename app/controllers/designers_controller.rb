@@ -38,7 +38,7 @@ class DesignersController < ApplicationController
   # PATCH/PUT /designers/1
   def update
     if current_designer.id == @designer.id # prevent users from modifying each others settings (e.g., email and/or avatar)
-      if @designer.update(params[:designer])
+      if @designer.update(params.require(:designer).permit([:auth_token]))
         head :no_content
       else
         render json: @designer.errors, status: :unprocessable_entity
