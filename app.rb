@@ -29,6 +29,6 @@ __END__
 
 <script>
   // reading
-  var es = new EventSource('/subscribe/greet');
+  var es = new EventSource('/subscribe/viewer');
   es.onmessage = function(e) { log.innerHTML += "\n" + e.data };
 </script>
