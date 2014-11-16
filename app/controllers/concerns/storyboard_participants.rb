@@ -18,6 +18,7 @@ module StoryboardParticipants
     end
   end
 
+  # GET /storyboards/1/participants
   def get_participants
     render json: @storyboard.participants.select(:email).uniq, except: :id
   end
