@@ -28,7 +28,7 @@ class DesignersController < ApplicationController
     
     respond_to do |format|
       if @designer.save
-        format.html { redirect_to root_url, notice: 'Designer was successfully created.' }
+        format.html { redirect_to new_storyboard_url, notice: 'Designer was successfully created.' }
         format.json { render :show, status: :created, location: @designer }
       else
         format.html { render :new }

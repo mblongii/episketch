@@ -1,0 +1,21 @@
+%h1 Listing storyboards
+
+%table
+  %tr
+    %th Designer
+    %th Name
+    %th
+    %th
+    %th
+
+  - @storyboards.each do |storyboard|
+    %tr
+      %td= storyboard.designer_id
+      %td= storyboard.name
+      %td= link_to 'Show', storyboard
+      %td= link_to 'Edit', edit_storyboard_path(storyboard)
+      %td= link_to 'Destroy', storyboard, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Storyboard', new_storyboard_path
