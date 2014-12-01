@@ -6,7 +6,6 @@ require "active_model/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
-require "active_resource"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
