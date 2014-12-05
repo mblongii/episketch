@@ -6,4 +6,4 @@ applications:
     services:
       - episketch-psql
     env:
-      PUSH_PROD: episketch-push.cfapps.io
+      PUSH_PROD: //episketch-push.cfapps.io
