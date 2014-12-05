@@ -31,6 +31,6 @@ __END__
 
 <script>
   // reading
-  var es = new EventSource('/subscribe/viewer');
+  var es = new EventSource('/subscribe/viewers');
   es.onmessage = function(e) { log.innerHTML += "\n" + e.data };
 </script>
