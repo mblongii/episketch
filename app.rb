@@ -13,8 +13,10 @@ get '/' do
   erb :stream
 end
 
-get '/viewer' do
-  erb "#{Sinatra::PubSub.publish( 'viewer', viewer: { email: "#{params['email']}", avatar_url: "#{params['avatar_url']}" } ) }"
+get '/viewers' do
+  @email = params[:email]
+  @avatar_url = params[:avatar_url]
+  erb "#{Sinatra::PubSub.publish( 'viewers', viewer: { email: @email, avatar_url: @avatar_url } ) }"
 end
 
 get '/ping' do
