@@ -4,7 +4,8 @@ class IndexController < ApplicationController
 
   def about
     render :json => {
-      description: 'Episketch: Share ideas with storyboards and sketches.',
+      name: 'Episketch',
+      description: 'Share ideas with storyboards and sketches.',
       info: 'http://episketch.com/',
       push: "#{push_server_uri}"
     }

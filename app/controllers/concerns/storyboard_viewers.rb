@@ -7,7 +7,7 @@ module StoryboardViewers
     @designer = Designer.find_by(auth_token: request.headers["Auth-Token"])
     @designer.viewing_storyboard_id = @storyboard.id
     @designer.save
-    push_message('viewer', @designer)
+    push_message('viewers', @designer)
   end
 
   # GET /storyboards/1/viewers
