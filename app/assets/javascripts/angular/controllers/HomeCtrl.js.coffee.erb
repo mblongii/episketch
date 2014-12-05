@@ -1,0 +1,7 @@
+@episketch.controller 'HomeCtrl', ['$scope', '$location', '$http', ($scope, $location, $http) ->
+  $http.get("<%= ENV['BASE_URI'] %>").success((data) ->
+    $scope.name = data.name
+    $scope.description = data.description
+    document.title = data.name + ': ' + data.description
+  )
+]
