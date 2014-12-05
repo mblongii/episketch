@@ -1,1 +1,1 @@
-web: bundle exec rails server -p $PORT
+web: bundle exec rake tmp:cache:clear && bundle exec rails server -p $PORT

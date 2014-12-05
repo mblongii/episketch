@@ -1,3 +1,5 @@
 applications:
   - name: episketch-app
     memory: 512M
+    env:
+      BASE_URI: //episketch-api.cfapps.io
