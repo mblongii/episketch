@@ -14,7 +14,7 @@ class DesignersController < ApplicationController
     @designers = []
     storyboards.each {|s|
       s.participants.each {|p|
-        @designers << Designer.where(email: p.email)
+        @designers << Designer.where(id: p.email)
       }
     }
     render json: @designers, except: [:auth_token]

@@ -10,7 +10,7 @@ module Storyboards
       @storyboards << s
     }
     # Find the storyboards where they are a participant
-    Participant.where(email: current_designer.email).each {|p|
+    Participant.where(id: current_designer.id).each {|p|
       Storyboard.where(id: p.storyboard_id).each {|s|
         @storyboards << s
       }
