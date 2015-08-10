@@ -18,6 +18,8 @@ end
 
 gem 'httparty'
 
+gem "paperclip-dropbox", ">= 1.1.7"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
