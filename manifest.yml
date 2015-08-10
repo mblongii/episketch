@@ -5,4 +5,4 @@ applications:
     services:
       - redis-cloud
     env:
-      REDIS_URL: redis://:wslPWHT2Vu0IFGm0@pub-redis-12612.us-east-1-3.3.ec2.garantiadata.com:12612
+      REDIS_URL: redis://:vJfTDdmQQWK9EZCr@pub-redis-18166.us-east-1-2.2.ec2.garantiadata.com:18166
