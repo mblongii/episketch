@@ -14,9 +14,9 @@ get '/' do
 end
 
 get '/viewers' do
-  @email = params[:email]
+  @id = params[:viewer_id]
   @avatar_url = params[:avatar_url]
-  erb "#{Sinatra::PubSub.publish( 'viewers', viewer: { email: @email, avatar_url: @avatar_url } ) }"
+  erb "#{Sinatra::PubSub.publish( 'viewers', viewer: { id: @id, avatar_url: @avatar_url } ) }"
 end
 
 get '/ping' do
