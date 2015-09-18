@@ -1,5 +1,3 @@
 applications:
-  - name: episketch-app
+  - name: episketch-proto
     memory: 512M
-    env:
-      BASE_URI: http://episketch-api.cfapps.io
