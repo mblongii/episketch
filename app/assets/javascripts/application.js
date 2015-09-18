@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ../../../vendor/assets/pivotal-ui/node_modules/bootstrap/dist/js/bootstrap.js
 //= require_tree .

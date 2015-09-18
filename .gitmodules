@@ -1,0 +1,3 @@
+[submodule "vendor/assets/pivotal-ui"]
+	path = vendor/assets/pivotal-ui
+	url = https://github.com/pivotal-cf/pivotal-ui.git
