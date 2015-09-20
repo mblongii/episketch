@@ -1,0 +1,19 @@
+.storyboard {
+  &.show {
+    .sketch {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      &.sortable-chosen {
+        opacity: 0.5;
+        cursor: move;
+        .description {
+          opacity: 0;
+        }
+      }
+      &.sortable-ghost {
+        cursor: move;
+        opacity: 0;
+      }
+    }
+  }
+}

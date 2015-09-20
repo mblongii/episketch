@@ -2,8 +2,12 @@
 %html{'ng-app' => 'episketch'}
   %head
     %title Episketch
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=no", name: 'viewport'}
+    %link{ type: "image/png", rel: "icon", href: image_path('sketchlab-logo@2x.png')}
     = stylesheet_link_tag 'application', media: 'all'
+    / = javascript_include_tag 'http://rubaxa.github.io/Sortable/Sortable.js'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body
-    = yield
+  %body.bg-neutral-1{ class: [controller_name, action_name] }
+    .container-fluid
+      = yield
