@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require ../../../vendor/assets/pivotal-ui/node_modules/bootstrap/dist/js/bootstrap.js
-//= require Sortable
+//= require Sortable.1.3.0-rc2
+//= require jquery.scrollstop.1.2.0
 //= require_tree .

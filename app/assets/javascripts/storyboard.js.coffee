@@ -2,9 +2,13 @@ $ ->
 
   if $('.storyboard.show #sketches').length > 0
 
-    Sortable.create el = document.getElementById("sketches"),
+    # ensure add new is always the last frame on the board
+    addSketchEl = $('#sketches .add-sketch')
+    make_add_sketch_last = ->
+      $('#sketches').append( addSketchEl)
 
-      group: "sorted-sketches"
+    sort_sketches = Sortable.create el = $("#sketches")[0],
+
       animation: 300
       delay: 150
       draggable: '.sketch'
@@ -14,8 +18,27 @@ $ ->
 
         get: (sortable) ->
           order = localStorage.getItem sortable.options.group
-          return if order then order.split '|' else []
+          return if order then order.split ',' else []
 
         set: (sortable) ->
           order = sortable.toArray();
-          localStorage.setItem sortable.options.group, order.join('|')
+          localStorage.setItem sortable.options.group, order.join(',')
+
+      onSort: (evt) ->
+        make_add_sketch_last()
+
+    # ensure a sketch cannot be 'chosen' unless scrolling has stopped (mainly for touch devices)
+    $(window)
+      .on "scrollstart", ->
+        sort_sketches.option('disabled', true)
+
+      .on "scrollstop", ->
+        sort_sketches.option('disabled', false)
+
+    # replace placholders with new content
+    i = 0
+    for sketch in $('.sketch-img')
+      $("[data-sketch-id=#{i}]").css('background-image', "url(/sample-sketches/sketch_#{i}.png)")
+      i++
+
+    make_add_sketch_last()
