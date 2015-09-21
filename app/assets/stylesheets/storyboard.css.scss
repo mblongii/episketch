@@ -1,8 +1,10 @@
 .storyboard {
   &.show {
-    .sketch, .add-sketch {
+    & > * {
       -webkit-touch-callout: none;
       -webkit-user-select: none;
+    }
+    .sketch, .add-sketch, .handle {
       .sketch-img {
         background-size: cover;
         img {
@@ -11,12 +13,12 @@
       }
     }
     .sketch {
-      &.sortable-chosen {
-        opacity: 0.6;
-        .handle {
-          cursor: move;
-        }
-      }
+//      &.sortable-chosen {
+//        opacity: 0.6;
+//        .handle {
+//          cursor: move;
+//        }
+//      }
       &.sortable-ghost {
         opacity: 0;
       }

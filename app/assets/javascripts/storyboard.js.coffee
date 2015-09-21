@@ -10,9 +10,9 @@ $ ->
     sort_sketches = Sortable.create el = $("#sketches")[0],
 
       animation: 300
-      delay: 150
+      delay: 100
       draggable: '.sketch'
-      handle: '.img-responsive'
+      handle: '.handle'
 
       store: # save the sort settings
 
@@ -28,7 +28,7 @@ $ ->
         make_add_sketch_last()
 
     # ensure a sketch cannot be 'chosen' unless scrolling has stopped (mainly for touch devices)
-    $(window)
+    $('#sketches')
       .on "scrollstart", ->
         sort_sketches.option('disabled', true)
 
