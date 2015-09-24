@@ -28,7 +28,7 @@ $ ->
         make_add_sketch_last()
 
     # ensure a sketch cannot be 'chosen' unless scrolling has stopped (mainly for touch devices)
-    $('#sketches')
+    $('body')
       .on "scrollstart", ->
         sort_sketches.option('disabled', true)
 
