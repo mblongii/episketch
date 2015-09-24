@@ -10,7 +10,7 @@ $ ->
     sort_sketches = Sortable.create el = $("#sketches")[0],
 
       animation: 300
-      delay: 100
+      delay: 150
       draggable: '.sketch'
       handle: '.handle'
 
