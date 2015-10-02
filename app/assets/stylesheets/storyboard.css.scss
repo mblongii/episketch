@@ -13,12 +13,12 @@
       }
     }
     .sketch {
-//      &.sortable-chosen {
-//        opacity: 0.6;
-//        .handle {
-//          cursor: move;
-//        }
-//      }
+      &.sortable-chosen {
+        opacity: 0.8;
+        .handle {
+          cursor: move;
+        }
+      }
       &.sortable-ghost {
         opacity: 0;
       }

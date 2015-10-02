@@ -1,5 +1,5 @@
 $ ->
-
+  # Sorting
   if $('.storyboard.show #sketches').length > 0
 
     # ensure add new is always the last frame on the board
@@ -13,6 +13,7 @@ $ ->
       delay: 150
       draggable: '.sketch'
       handle: '.handle'
+      scroll: false
 
       store: # save the sort settings
 
@@ -28,11 +29,13 @@ $ ->
         make_add_sketch_last()
 
     # ensure a sketch cannot be 'chosen' unless scrolling has stopped (mainly for touch devices)
-    $('body')
+    $.event.special.scrollstop.latency = 200;
+    $(window)
       .on "scrollstart", ->
         sort_sketches.option('disabled', true)
-
+        console.log 'scroll start'
       .on "scrollstop", ->
+        console.log 'scroll stop'
         sort_sketches.option('disabled', false)
 
     # replace placholders with new content
@@ -42,3 +45,15 @@ $ ->
       i++
 
     make_add_sketch_last()
+
+  # Coloring
+  my_image = $('#the_image')[0]
+  colorThief = new ColorThief()
+  $(my_image).load ->
+    the_color = colorThief.getColor(my_image)
+    console.log the_color
+    # $('body').css('color', "rgb(#{the_color})")
+    the_palette = colorThief.getPalette(my_image, 2)
+    console.log the_palette
+    $('body').css('background-color', "rgb(#{the_palette[1]})")
+    $('body').css('color', "rgb(#{the_palette[0]})")
