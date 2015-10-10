@@ -1,6 +1,3 @@
-= image_tag '/sample-sketches/sketch_1.png', id: 'the_image', width: 100, height: 100, style: 'position: absolute; left: -1000px;'
-/ = image_tag '/birthday-cake.jpg', id: 'the_image', width: 100, height: 100
-
 .row
   .col-md-24
     %h2.statement.pal
@@ -38,6 +35,9 @@
       6
   .add-sketch.col-xs-24.col-sm-12.col-md-8.col-lg-8
     %label.pan.man{ for: 'addsketch'}
+      .icon
+        .fa.fa-icon.fa-camera
+        .fa.fa-icon.fa-plus
       .sketch-img
-        = image_tag 'add-sketch.png', draggable: false
+        = image_tag 'image-cover.png', class: 'img-responsive handle', draggable: false
     %input#addsketch{ type: 'file', style: 'display: none;'}
