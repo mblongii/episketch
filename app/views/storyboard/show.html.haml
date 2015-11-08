@@ -24,8 +24,9 @@
     %p.description.pvm
       4
   .sketch.col-xs-24.col-sm-12.col-md-8.col-lg-8
-    .sketch-img{ 'data-sketch-id' => '5'}
-      = image_tag 'image-cover.png', class: 'img-responsive handle'
+    = link_to sketch_show_path do
+      .sketch-img{ 'data-sketch-id' => '5'}
+        = image_tag 'image-cover.png', class: 'img-responsive handle'
     %p.description.pvm
       5
   .sketch.col-xs-24.col-sm-12.col-md-8.col-lg-8
