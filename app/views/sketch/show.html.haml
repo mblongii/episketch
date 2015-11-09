@@ -3,18 +3,22 @@
     = link_to storyboard_show_path do
       .fa.fa-icon.fa-close.pull-right.h1.pan.man.type-neutral-4
 .row.type-neutral-6
+  .col-md-16
+    %h2.statement.txt-c
+      Versions
   .col-md-24
     .row
       .col-md-16
-        %h2.statement.txt-c
-          Versions
         = image_tag '/sample-sketches/sketch_5.png', class: 'img-responsive'
       .col-md-8
-        .created.mtxxxl
+        .created.mtxl
           .em-alt.type-sm
             Created 2 days ago by
           .created-by.pvxl
             = image_tag 'http://www.gravatar.com/avatar/8ebef7435ae7ad74f14b1c3d91f4ef17?size=256&default=404', class: 'img-circle avatar', width: 60, height: 60, style: 'border: none;'
             %span.h2.txt-m.mll Mike
-          .description.em-alt.type-sm
-            Description
+          .description
+            .em-alt.type-sm
+              Description
+            %p
+              The BART train doors open. On the station wall there are two signs: go to the left for Montgomery; go to the right for Sansome.            
