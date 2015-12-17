@@ -1,0 +1,7 @@
+.row
+  .col-md-24
+    #swatch_test
+      %h1
+        Sample Text
+      .sketch-img{ 'data-sketch-id' => "#{params[:id] ? params[:id] : 1}"}
+        = image_tag 'image-cover.png', class: 'img-responsive'

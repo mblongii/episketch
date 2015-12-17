@@ -1,7 +1,6 @@
 @import 'release/pui-v2.0.0-alpha.4/pui-variables';
 .sketch {
   &.show {
-    background-color: rgba($neutral-1, 1.0);
     & > * {
       -webkit-touch-callout: none;
       -webkit-user-select: none;
