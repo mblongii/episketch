@@ -3,5 +3,7 @@
     #swatch_test
       %h1
         Sample Text
-      .sketch-img{ 'data-sketch-id' => "#{params[:id] ? params[:id] : 1}"}
+      .sketch-img{ 'data-sketch-id' => "#{params[:id] ? params[:id] : 1}", style: 'background-size: cover;'}
         = image_tag 'image-cover.png', class: 'img-responsive'
+      %p.description
+        This is a description or caption of the image.
