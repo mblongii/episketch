@@ -1,9 +1,12 @@
+- dir = 'public/sample-sketches/'
+- file_count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
+- random_image = rand(1..file_count)
 .row
   .col-md-24
     #swatch_test
       %h1
-        Sample Text
-      .sketch-img{ 'data-sketch-id' => "#{params[:id] ? params[:id] : 1}", style: 'background-size: cover;'}
+        = "Sample Image #{random_image} of #{file_count}"
+      .sketch-img{ 'data-sketch-id' => "#{params[:id] ? params[:id] : random_image}", style: 'background-size: cover;'}
         = image_tag 'image-cover.png', class: 'img-responsive'
       %p.description
         This is a description or caption of the image.
