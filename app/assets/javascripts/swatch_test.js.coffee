@@ -1,6 +1,7 @@
 $ ->
   if $('.swatch_test.index').length > 0
     console.log 'swatch test'
+
     # replace placholders with new content
     i = $('.sketch-img').data('sketch-id')
     for sketch in $('.sketch-img')
@@ -17,7 +18,6 @@ $ ->
     colorThief = new ColorThief()
 
     $(color_src).load ->
-
       num_colors = 8
       the_color = colorThief.getColor(color_src)
       the_palette = colorThief.getPalette(color_src, num_colors)
