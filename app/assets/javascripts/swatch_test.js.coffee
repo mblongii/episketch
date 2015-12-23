@@ -18,15 +18,15 @@ $ ->
     colorThief = new ColorThief()
 
     $(color_src).load ->
-      num_colors = 24
+      num_colors = 25
       the_color = colorThief.getColor(color_src)
       the_palette = colorThief.getPalette(color_src, num_colors)
 
       for rgb in the_palette
-        color_swatch = $("<div class='swatch_#{i++}'>")
-        color_swatch.attr("style", "background-color: rgb(#{rgb}); width: 20px; height: 20px; border: 1px solid gray; display: inline-block;")
+        color_swatch = $("<div class='swatch_#{i++} col-sm-1 col-md-1'>")
+        color_swatch.attr("style", "background-color: rgb(#{rgb}); height: 20px; border: 1px solid rgba(128,128,128,0.5);")
         color_swatch.attr("title", "#{rgb}")
-        color_swatch.prependTo('#swatch_test')
+        color_swatch.prependTo('#swatches')
 
       sums = []
       for rgb in the_palette
@@ -38,20 +38,13 @@ $ ->
       desc_color = the_palette[brightest]
       bg_color = the_palette[darkest]
 
-      the_palette.splice(brightest, 2)
-      sums.splice(brightest, 2)
-
+      the_palette.splice(brightest, 1)
+      sums.splice(brightest, 1)
       next_brightest = sums.indexOf(Math.max.apply(Math, sums))
+
       title_color = the_palette[next_brightest]
 
       $('body').css('background-color', "rgb(#{bg_color})")
       $('body').css('color', "rgb(#{title_color})")
       $('p.description').css('color', "rgba(#{desc_color}, 1.0)")
-
-      i = 0
-      $("<span> &nbsp; &nbsp;</span>").prependTo('#swatch_test')
-      for rgb in the_palette
-        color_swatch = $("<div class='swatch_#{i++}'>")
-        color_swatch.attr("style", "background-color: rgb(#{rgb}); width: 20px; height: 20px; border: 1px solid gray; display: inline-block;")
-        color_swatch.attr("title", "#{rgb}")
-        color_swatch.prependTo('#swatch_test')
+      $('p.caption').css('color', "rgba(#{title_color}, 0.75)")
