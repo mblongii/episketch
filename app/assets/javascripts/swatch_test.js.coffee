@@ -11,14 +11,14 @@ $ ->
     # Coloring
     sampled_image = $('<img id="sample_this_image">')
     sampled_image.attr('src', $('.sketch-img').first().css('background-image').replace(/^url|["\(\)"]/g, ''))
-    sampled_image.attr('style', 'position: absolute; top: -9000px; width: 500px; height: 500px;')
+    sampled_image.attr('style', 'position: absolute; top: -9000px; width: 500px;')
     sampled_image.appendTo('body')
 
     color_src = $('#sample_this_image')[0]
     colorThief = new ColorThief()
 
     $(color_src).load ->
-      num_colors = 8
+      num_colors = 24
       the_color = colorThief.getColor(color_src)
       the_palette = colorThief.getPalette(color_src, num_colors)
 
